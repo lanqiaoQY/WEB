@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>展示页面</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+
+
+<div class="layui-anim layui-anim-scaleSpring layui-anim-loop"><h1>恭喜你进入展示页面!!!</h1></div>
+
+<!--<table id="demo" lay-filter="test"></table>-->
+<script src="layui/layui.js"></script>
+
+
+
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#test1' //指定元素
+        });
+    });
+</script>
+
+</body>
+</html>
