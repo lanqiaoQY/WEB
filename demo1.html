@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<!--禁用时间的demo-->
+<head>
+	<meta charset="utf-8">
+	<title>时间选择</title>
+<!--	需要替换成为自己本地的css文件-->
+	<link rel="stylesheet" href="layui/css/layui.css">
+</head>
+
+
+<body>
+<h4>请选择时间</h4>
+<div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+	<input type="text" class="layui-input" id="test1">
+</div>
+
+
+<script src="layui/layui.all.js"></script> <!-- 注意：需要替换为自己的js所在位置-->
+
+<!-- 日历 -->
+<script>
+	layui.use('laydate', function(){
+		var laydate = layui.laydate;
+
+		//执行一个laydate实例
+		laydate.render({
+			elem: '#test1' ,//指定元素
+			//,type: 'date' //默认年月日,可以不填
+			// range: true //或 range: '~' 来自定义分割字符(会出现连续两个月的选择面板)
+			// 有效范围前后一周
+			min: -0, //昨天禁用
+			max: 30, //一个月后
+			// show: true //直接显示
+		});
+	});
+</script>
+
+
+</body>
+</html>
