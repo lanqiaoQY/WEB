@@ -20,12 +20,13 @@ public class SavePdf extends HttpServlet {
     private double harea;//面积
     private String haddress;//地区
     private String housetype;//类型
-    private String hphoto;//图片地址
+    private String hphoto="";//图片地址
     private String hsynopsis;//详情
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         response.setCharacterEncoding("utf-8");
+        PrintWriter out1 = response.getWriter();
 
         //得到上传文件的保存目录
         String savePath = "D:\\IDEA\\ideaCCJ\\lanqiao\\src\\main\\webapp\\img\\";
@@ -117,17 +118,25 @@ public class SavePdf extends HttpServlet {
             }
 
             //图片路径
+            System.out.println("这里是原始："+hphoto);
             String substring = hphoto.substring(0, hphoto.length()-1);
-            System.out.println(substring);
+            System.out.println("这里是优化后："+substring);
 
             //调用Service
             FYService service = new FYService();
             int i = service.add(hmoney,harea,haddress,housetype,hsynopsis,substring);
             //判断房源信息是否添加成功
             if(i==0){
+
                 System.out.println("添加失败");
             }else{
+
                 System.out.println("添加成功");
+                out1.write("<html>"
+                        + "<head><script type='text/javascript'> alert('添加成功！返回继续添加');location='test2.html';</script></head>"
+                        + "<body></body></html>");
+                return;
+
             }
         } catch (Exception e) {
             message="{\"code\":\"1\",\"msg\":\"上传失败\"}";
