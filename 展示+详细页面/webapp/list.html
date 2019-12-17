@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品列表</title>
+    <link rel="stylesheet" href="layui/css/layui.css"/>
+</head>
+<body>
+<div id="vueTable">
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th width="20%">id</th>
+            <th width="20%">名称</th>
+            <th width="20%">价格</th>
+            <th width="20%">类型</th>
+            <th width="20%">颜色</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="item in products">
+            <td>{{item.pid}}</td>
+            <td>{{item.pname}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.ptype}}</td>
+            <td>{{item.pcolor}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- 分页容器 -->
+<div id="pagecontainer"></div>
+<script src="layui/js/Vue.js"></script>
+<script src="layui/js/axios.min.js"></script>
+<script src="layui/layui.js" media="all"></script>
+<script src="layui/js/jquery-3.4.1.js"></script>
+<script src="layui/js/Demo.js"></script>
+</body>
+
+</html>
