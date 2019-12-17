@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css"/>
+
+</head>
+<body>
+
+<div class="layui-form-item">
+    <label class="layui-form-label">选择日期</label>
+    <div class="layui-input-inline">
+        <input type="text" name="password" id="test1" required lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+    </div>
+    <button class="layui-btn" onclick="f1()">查询</button>
+</div>
+
+<div id="vueTable">
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th width="12%">id</th>
+            <th width="12%">用户名</th>
+            <th width="12%">性别</th>
+            <th width="12%">手机</th>
+            <th width="12%">预约日期</th>
+            <th width="12%">预约时间</th>
+            <th width="12%">订单日期</th>
+            <th width="12%">房源id</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr v-for="item in products">
+            <td>{{item.oid}}</td>
+            <td>{{item.oname}}</td>
+            <td>{{item.osex}}</td>
+            <td>{{item.ophone}}</td>
+            <td>{{item.opdata}}</td>
+            <td>{{item.optime}}</td>
+            <td>{{item.otime}}</td>
+            <td>{{item.hid}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- 分页容器 -->
+<div id="pagecontainer"></div>
+<script src="js/Vue.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="layui/layui.js" media="all"></script>
+<script src="js/jquery-3.4.1.js"></script>
+<script src="js/list.js"></script>
+
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        var initYear;
+        laydate.render({
+            elem: '#test1',
+            type: 'month',
+            /* ready和change函数是为了实现选择年月时不用点确定直接关闭  */
+            ready: function(date){ // 控件在打开时触发，回调返回一个参数：初始的日期时间对象
+                initYear = date.year;
+            },
+            change: function(value, date, endDate){ // 年月日时间被切换时都会触发。回调返回三个参数，分别代表：生成的值、日期时间对象、结束的日期时间对象
+                var selectYear = date.year;
+                var differ = selectYear-initYear;
+                if (differ == 0) {
+                    if($(".layui-laydate").length){
+                        $("#test1").val(value);
+                        $(".layui-laydate").remove();
+                    }
+                }
+                initYear = selectYear;
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>
