@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的预约</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <meta nme="viewport" content="width=480,target-densitydpi=dpi,minimal-ui">
+    <meta name="viewport" content="width=480,minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="layui/layui.js"></script>
+</head>
+<body>
+<form class="layui-form">
+    <div class="layui-container">
+        <div class="layui-row" align="center">
+            <div class="layui-col-md12" >
+                <h1>我的预约</h1>
+            </div>
+        </div>
+        <div class="layui-tab layui-tab-card">
+            <ul class="layui-tab-title">
+                <li class="layui-this" style="width: 42%">
+                    <h1>待办理</h1></li>
+                <li style="width: 40%">
+                    <h1>预约记录</h1></li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <!--<div class="layui-btn-group demoTable">-->
+                        <!--<button class="layui-btn layui-btn-sm" type="button" lay-event="getCheckData" onclick="f()">获取选中行数据</button>-->
+                    <!--</div>-->
+                    <table class="layui-hide" id="LAY_table_user1" lay-filter="user"}></table>
+                    <script src="js/list1.js"></script>
+                </div>
+                <div class="layui-tab-item">
+                    <div class="demoTable">
+                        日期查询：
+                        <div class="layui-inline">
+                            <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+                        </div>
+                        <button class="layui-btn" data-type="reload">搜索</button>
+                    </div>
+                    <table class="layui-hide" id="LAY_table_user" lay-filter="user"}></table>
+                    <script src="js/list.js"></script>
+                </div>
+            </div>
+        </div>
+        <script>
+            //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+            layui.use('element', function(){
+                var element = layui.element;
+            });
+        </script>
+
+        <script>
+            //日期
+            layui.use('laydate', function(){
+                var laydate = layui.laydate;
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#demoReload' ,//指定元素
+                });
+            });
+        </script>
+
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm" type="button" lay-event="getCheckData">获取选中行数据</button>
+            </div>
+        </script>
+    </div>
+</form>
+</body>
+</html>
