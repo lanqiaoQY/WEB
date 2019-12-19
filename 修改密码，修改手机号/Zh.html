@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改手机号</title>
+    <link rel="stylesheet" href="layui.css"/>
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+<body>
+<form class="layui-form" action="/c12/AccountServlet" method="post">
+    <div align="center">
+        <div class="layui-form-item" style="width:35%">
+            <label class="layui-form-label" style="width:30%">手机号：</label>
+            <div class="layui-input-inline">
+                <input type="text" name="uid" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+            </div>
+            <label class="welcome" style="width:30%"></label>
+        </div>
+
+        <div class="layui-form-item" style="width:35%">
+            <label class="layui-form-label" style="width:30%">验证码：</label>
+            <div class="layui-input-inline">
+                <input type="password" required lay-verify="required" placeholder="请输入验证码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" type="submit">下一步</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="layui.js"></script>
+</body>
+</html>
